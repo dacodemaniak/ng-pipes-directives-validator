@@ -1,16 +1,23 @@
-import { TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { IntlModule } from './intl/intl.module';
+import { IntlService } from './intl/services/intl.service';
 import { SharedModule } from './shared/shared.module';
+import { TranslateTestingModule } from 'ngx-translate-testing';
+import { TranslateService } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
+  let service: IntlService;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent
       ],
       imports: [
-        SharedModule
-      ]
+        SharedModule,
+        IntlModule
+      ],
     }).compileComponents();
   });
 
@@ -20,16 +27,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Persons'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('Persons');
-  });
-
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Persons');
+    expect(compiled.querySelector('h1').textContent).toContain('');
   });
 });

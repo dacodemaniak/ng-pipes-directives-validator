@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonModel } from './core/models/person-model';
 import { PersonService } from './core/services/person.service';
+import { IntlService } from './intl/services/intl.service';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,12 @@ import { PersonService } from './core/services/person.service';
 })
 export class AppComponent implements OnInit {
   
-  title = 'Persons';
   persons: PersonModel[] = [];
   person: PersonModel | undefined;
 
   public constructor(
-    private personService: PersonService
+    private personService: PersonService,
+    private intlService: IntlService
   ) {}
 
   ngOnInit(): void {
