@@ -4,13 +4,15 @@ import { InitialsPipe } from './pipes/initials.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowHidePasswordDirective } from './directives/show-hide-password.directive';
+import { IsRequiredDirective } from './directives/is-required.directive';
 
 
 
 @NgModule({
   declarations: [
     InitialsPipe,
-    ShowHidePasswordDirective
+    ShowHidePasswordDirective,
+    IsRequiredDirective
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { ShowHidePasswordDirective } from './directives/show-hide-password.direc
     HttpClientModule,
     ReactiveFormsModule,
     InitialsPipe,
-    ShowHidePasswordDirective
+    ShowHidePasswordDirective,
+    IsRequiredDirective
   ]
 })
 export class SharedModule { }

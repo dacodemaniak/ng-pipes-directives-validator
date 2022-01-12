@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonModel } from './core/models/person-model';
 import { PersonService } from './core/services/person.service';
 import { IntlService } from './intl/services/intl.service';
+import { MustMatch } from './shared/validators/must-match';
 
 @Component({
   selector: 'app-root',
@@ -60,6 +61,12 @@ export class AppComponent implements OnInit {
         '',
         Validators.required
       ]
+    },
+    {
+        validators: Validators.compose([
+          MustMatch.mustMatch('password', 'confirmPassword', {passwordMustMatch: true}),
+          MustMatch.mustMatch('email', 'confirmEmail', {emailMustMatch: true})
+        ])
     });
   }
 
