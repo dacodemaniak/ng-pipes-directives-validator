@@ -48,7 +48,13 @@
   </div>
   -->
   <div class="form-group">
-    <input type="password" formControlName="password" placeholder="Choose password" appShowHidePassword [mode]="'icon'" (isHideMode)="toggleConfirmPassword($event)">
+    <input 
+      type="password" 
+      formControlName="password" 
+      placeholder="Choose password"
+      appShowHidePassword 
+      [mode]="'icon'"
+      (isHideMode)="toggleConfirmPassword($event)">
   </div>
 
   <div [ngClass]="{'form-group': true, 'd-none': !passwordState}">

@@ -19,9 +19,7 @@ export class ShowHidePasswordDirective implements OnInit {
   private _passwordState: boolean = true;
   private _spanElement!: HTMLElement;
 
-  constructor(private element: ElementRef) {
-    //this.init();
-  }
+  constructor(private element: ElementRef) {}
 
   public ngOnInit(): void {
     console.log(`Mode is : ${this.mode}`);
@@ -52,7 +50,7 @@ export class ShowHidePasswordDirective implements OnInit {
       this.mode === 'text' ? 
         this._spanElement.textContent = States.HIDE :
         this._spanElement.classList.add(States.HIDE_ICON);
-        this.isHideMode.emit(false);
+      this.isHideMode.emit(false);
       this._timeOut();    
     }
   }
