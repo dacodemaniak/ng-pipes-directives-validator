@@ -25,3 +25,35 @@
 <ng-template #noPerson>
   Click on a card to load a Person
 </ng-template>
+
+
+<!-- Creation form goes here -->
+<form [formGroup]="personForm">
+  <div class="form-group">
+    <input type="text" formControlName="lastName" placeholder="Your name...">
+  </div>
+  <div class="form-group">
+    <input type="text" formControlName="firstName" placeholder="Your firstname...">
+  </div>
+  <div class="form-group">
+    <input type="email" formControlName="email" placeholder="Your email...">
+  </div>
+  <div class="form-group">
+    <input type="email" formControlName="confirmEmail" placeholder="Confirm your email...">
+  </div>
+  <!--
+  <div class="form-group">
+    <input [type]="passwordState ? 'password' : 'text'" formControlName="password" placeholder="Choose a password...">
+    <span (click)="passwordState = !passwordState">{{ passwordState ? 'Show' : 'Hide' }}</span>
+  </div>
+  -->
+  <div class="form-group">
+    <input type="password" formControlName="password" placeholder="Choose password" appShowHidePassword [mode]="'icon'" (isHideMode)="toggleConfirmPassword($event)">
+  </div>
+
+  <div [ngClass]="{'form-group': true, 'd-none': !passwordState}">
+    <input type="password" formControlName="confirmPassword" placeholder="Confirm your password...">
+  </div>
+
+  <button [disabled]="personForm.invalid">Create</button>
+</form>
