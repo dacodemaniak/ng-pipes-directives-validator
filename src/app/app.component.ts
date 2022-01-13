@@ -23,6 +23,11 @@ export class AppComponent implements OnInit {
 
   passwordState: boolean = true;
 
+  public sortedCol: {sortedCol: string, direction: string} = {
+    sortedCol: 'lastName',
+    direction: 'asc'
+  };
+
   public constructor(
     private personService: PersonService,
     private intlService: IntlService,
@@ -85,4 +90,7 @@ export class AppComponent implements OnInit {
     this.passwordState = passwordState;
   }
 
+  public setCurrentSortCol(sortedCol: {sortedCol: string, direction: string}): void {
+    this.sortedCol = sortedCol;
+  }
 }

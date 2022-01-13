@@ -36,3 +36,32 @@
         }
     }
 }
+
+/**
+* Sorter design
+**/
+div {
+  &.sorter {
+    span {
+      &.label {
+        &.is-active {
+          font-weight: bold;
+        }
+      }
+      &.up {
+        &.is-active {
+          &:after {
+            content: '\\\/';
+          }
+        }
+      }
+      &.down {
+        &.is-active {
+          &:after {
+            content: '\/\\';
+          }
+        }
+      }
+    }
+  }
+}

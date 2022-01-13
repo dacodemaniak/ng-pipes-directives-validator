@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowHidePasswordDirective } from './directives/show-hide-password.directive';
 import { IsRequiredDirective } from './directives/is-required.directive';
+import { SortDirective } from './directives/sort.directive';
 
 
 
@@ -12,7 +13,8 @@ import { IsRequiredDirective } from './directives/is-required.directive';
   declarations: [
     InitialsPipe,
     ShowHidePasswordDirective,
-    IsRequiredDirective
+    IsRequiredDirective,
+    SortDirective
   ],
   imports: [
     CommonModule
@@ -22,7 +24,8 @@ import { IsRequiredDirective } from './directives/is-required.directive';
     ReactiveFormsModule,
     InitialsPipe,
     ShowHidePasswordDirective,
-    IsRequiredDirective
+    IsRequiredDirective,
+    SortDirective
   ]
 })
 export class SharedModule { }

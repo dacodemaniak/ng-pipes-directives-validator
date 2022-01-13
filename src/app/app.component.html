@@ -1,12 +1,39 @@
 <h1>{{ 'title' | translate }}</h1>
 
 <ng-container *ngIf="persons.length">
+  <div [sortable]="persons">
+    <div class="sorter">
+      <span
+        [ngClass]="{'up': true, 'is-active': sortedCol.sortedCol==='lastName' && sortedCol.direction==='asc'}">
+      </span>
+      <span
+        [appSort]="persons"
+        data-order="desc"
+        data-name="lastName"
+        (currentSortCol)="setCurrentSortCol($event)"
+        [ngClass]="{'label': true, 'is-active': sortedCol.sortedCol==='lastName'}"
+        >Sort on name</span>
+        <span [ngClass]="{'down': true, 'is-active': sortedCol.sortedCol==='lastName' && sortedCol.direction==='desc'}"></span>
+    </div>
+
+    <div class="sorter">
+      <span [ngClass]="{'up': true, 'is-active': sortedCol.sortedCol==='firstName' && sortedCol.direction==='asc'}"></span>
+      <span
+        [appSort]="persons"
+        data-order="desc"
+        data-name="firstName"
+        (currentSortCol)="setCurrentSortCol($event)"
+        [ngClass]="{'label': true, 'is-active': sortedCol.sortedCol==='firstName'}"
+      >Sort on firstname</span>
+      <span [ngClass]="{'down': true, 'is-active': sortedCol.sortedCol==='firstName' && sortedCol.direction==='desc'}"></span>
+    </div>
+</div>
   <div class="card" *ngFor="let person of persons" (click)="loadPerson(person)">
     <p>
       <span class="my-badge">
         {{ person | initials: {whole: true} | uppercase }}
       </span>
-      Prénom / Nom : {{ person.firstName }} {{ person.lastName }}
+      {{ person.firstName }} {{ person.lastName }}
     </p>
   </div>
 </ng-container>

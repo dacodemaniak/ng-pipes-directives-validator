@@ -4,6 +4,7 @@ import { PersonModel } from '../models/person-model';
 import { Observable, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { delay, dematerialize, materialize, mergeMap, switchMap, switchMapTo } from 'rxjs/operators';
+import { Sorter } from '../helpers/sorter';
 
 @Injectable({
   providedIn: 'root'
@@ -12,19 +13,31 @@ export class PersonService implements IService<PersonModel> {
 
   private readonly persons: PersonModel[] = [
     {
+      lastName: 'Zidane',
+      firstName: 'Zinedine'
+    },
+    {
       lastName: 'Aubert',
       firstName: 'Jean-Luc'
     },
     {
       lastName: 'Bond',
       firstName: 'James'
-    }
+    },
+    {
+      lastName: 'Latte',
+      firstName: 'Truddy'
+    },
   ];
 
   constructor() { }
 
   public findAll(): PersonModel[] {
-    return this.persons;
+    const sorter: Sorter = new Sorter();
+
+    return this.persons.sort(
+      sorter.getSorter('lastName', 'asc')
+    );
   }
 
   public findOne(name: string): PersonModel | undefined {
