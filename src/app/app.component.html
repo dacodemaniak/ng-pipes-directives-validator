@@ -18,7 +18,7 @@
         {{ person | initials | uppercase }}
       </span>
       {{ person.firstName }} {{ person.lastName }}
-    </p>    
+    </p>
   </div>
 </ng-container>
 
@@ -31,6 +31,11 @@
 <form [formGroup]="personForm">
   <div class="form-group">
     <input type="text" formControlName="lastName" placeholder="Your name..." appIsRequired [mark]="'(*)'">
+    <div class="error" *ngIf="c.lastName.touched || c.lastName.dirty && c.lastName.errors">
+      <div *ngIf="c.lastName.hasError('alreadyExists')">
+        {{ personForm.controls.lastName.value }} is already taken, choose another one
+      </div>
+    </div>
   </div>
   <div class="form-group">
     <input type="text" formControlName="firstName" placeholder="Your firstname...">
@@ -51,11 +56,11 @@
   </div>
   -->
   <div class="form-group">
-    <input 
-      type="password" 
-      formControlName="password" 
+    <input
+      type="password"
+      formControlName="password"
       placeholder="Choose password"
-      appShowHidePassword 
+      appShowHidePassword
       [mode]="'icon'"
       (isHideMode)="toggleConfirmPassword($event)"
       appIsRequired [mark]="'(*)'">

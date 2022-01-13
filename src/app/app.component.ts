@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PersonModel } from './core/models/person-model';
 import { PersonService } from './core/services/person.service';
 import { IntlService } from './intl/services/intl.service';
 import { MustMatch } from './shared/validators/must-match';
+import { UserNameValidator } from './shared/validators/user-name-validator';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { MustMatch } from './shared/validators/must-match';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
+
   persons: PersonModel[] = [];
   person: PersonModel | undefined;
 
@@ -25,8 +26,13 @@ export class AppComponent implements OnInit {
   public constructor(
     private personService: PersonService,
     private intlService: IntlService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userNameValidator: UserNameValidator
   ) {}
+
+  public get c(): {[key: string]: AbstractControl} {
+    return this.personForm.controls;
+  }
 
   ngOnInit(): void {
     this.persons = this.personService.findAll();
@@ -34,7 +40,8 @@ export class AppComponent implements OnInit {
     this.personForm = this.formBuilder.group({
       lastName: [
         '',
-        Validators.required
+        Validators.required,
+        this.userNameValidator.alreadyExists.bind(this.userNameValidator)
       ],
       firstName: [
         ''
