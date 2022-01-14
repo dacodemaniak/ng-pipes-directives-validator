@@ -18,9 +18,9 @@ describe('PersonService', () => {
     expect(service).toBeTruthy();
   });
 
-  it ('Should return 2 PersonModel', () => {
+  it ('Should return 4 PersonModel', () => {
     const persons: number = service.findAll().length;
-    expect(persons).toBe(2);
+    expect(persons).toBe(4);
   });
 
   it (`Should findOne return 'Aubert Jean-Luc' from the database`, () => {

@@ -1,7 +1,7 @@
 <h1>{{ 'title' | translate }}</h1>
 
 <ng-container *ngIf="persons.length">
-  <div [sortable]="persons">
+  <div>
     <div class="sorter">
       <span
         [ngClass]="{'up': true, 'is-active': sortedCol.sortedCol==='lastName' && sortedCol.direction==='asc'}">
