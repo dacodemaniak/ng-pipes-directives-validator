@@ -37,7 +37,7 @@ $width: 320px;
         &:focus {
             outline: none;
         }
-
+        // [appFormField] input:focus ~ label {}
         &:focus ~ label,
         &:valid ~ label {
             top: -14px;
@@ -45,7 +45,7 @@ $width: 320px;
             color: $hl-color;
         }
 
-        &:focus ~ .bar:before {
+        &:focus ~ .bar::before {
             width: $width;
         }
     }

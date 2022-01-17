@@ -13,7 +13,6 @@ export class MaterialLikeDirective implements OnInit {
       this.nativeElement = this.elementRef.nativeElement;
       const parentEl: HTMLElement = this.nativeElement.parentElement;
       
-      console.log(`parent ${parentEl.tagName} have appFormFieldAttribute : ${parentEl.getAttribute('appFormField') === null ? 'nope' : 'yes'}`);
       if (parentEl.tagName !== 'FORM-FIELD') {
         if (parentEl.getAttribute('appFormField') === null) {
           throw new Error(`appMaterialLike must be child of a 'form-field' element`);
@@ -50,7 +49,8 @@ export class MaterialLikeDirective implements OnInit {
   }
 
   private _hasLabel(element: HTMLElement): boolean {
-    const labels: Element[] = Array.from(element.children).filter((child: HTMLElement) => child.tagName === 'LABEL');
+    const labels: Element[] = Array.from(element.children)
+      .filter((child: HTMLElement) => child.tagName === 'LABEL');
     return labels.length > 0;
   }
 

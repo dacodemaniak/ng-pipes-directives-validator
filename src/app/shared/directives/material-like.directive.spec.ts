@@ -74,4 +74,12 @@ describe('MaterialLikeDirective', () => {
     expect(formFieldDirective).toBe(true);
   });
 
+  it (`Should have an element 'form-field' or an element with 'appFormFieldAttribute as parent`, () => {
+    const parent: HTMLElement = childInput.parentElement;
+    const parentIsFormField: boolean = parent.tagName === 'FORM-FIELD';
+    const parentHasAppFormFieldAttribute: boolean = parent.getAttribute('appFormField') !== null;
+
+    expect(parentIsFormField || parentHasAppFormFieldAttribute).toBe(true);
+  });
+
 });
