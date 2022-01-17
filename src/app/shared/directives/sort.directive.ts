@@ -27,7 +27,6 @@ export class SortDirective {
    this.appSort.sort(sortHelper.getSorter(property, order));
 
    // Move sort order...
-   console.log(`Move sort order`);
    if (order === 'desc') {
      nativeElement.setAttribute('data-order', 'asc');
    } else {

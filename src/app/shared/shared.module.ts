@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShowHidePasswordDirective } from './directives/show-hide-password.directive';
 import { IsRequiredDirective } from './directives/is-required.directive';
 import { SortDirective } from './directives/sort.directive';
+import { MaterialLikeDirective } from './directives/material-like.directive';
+import { FormFieldDirective } from './directives/form-field.directive';
 
 
 
@@ -14,7 +16,9 @@ import { SortDirective } from './directives/sort.directive';
     InitialsPipe,
     ShowHidePasswordDirective,
     IsRequiredDirective,
-    SortDirective
+    SortDirective,
+    MaterialLikeDirective,
+    FormFieldDirective
   ],
   imports: [
     CommonModule
@@ -25,7 +29,9 @@ import { SortDirective } from './directives/sort.directive';
     InitialsPipe,
     ShowHidePasswordDirective,
     IsRequiredDirective,
-    SortDirective
+    SortDirective,
+    MaterialLikeDirective,
+    FormFieldDirective
   ]
 })
 export class SharedModule { }

@@ -56,8 +56,8 @@
 
 <!-- Creation form goes here -->
 <form [formGroup]="personForm">
-  <div class="form-group">
-    <input type="text" formControlName="lastName" placeholder="Your name..." appIsRequired [mark]="'(*)'">
+  <div appFormField class="form-group">
+    <input appIsRequired appMaterialLike type="text" formControlName="lastName" placeholder="Your name..." required  [mark]="'(*)'">
     <div class="error" *ngIf="c.lastName.touched || c.lastName.dirty && c.lastName.errors">
       <div *ngIf="c.lastName.hasError('alreadyExists')">
         {{ personForm.controls.lastName.value }} is already taken, choose another one
