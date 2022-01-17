@@ -37,6 +37,6 @@ export class SortDirective {
    this.currentSortCol.emit({
      sortedCol: property,
      direction: order
-   })
+   });
   }
 }

@@ -8,10 +8,17 @@ import { PersonService } from 'src/app/core/services/person.service';
   providedIn: 'root'
 })
 export class UserNameValidator {
+  public static myValidator: UserNameValidator;
 
   constructor(
     private personService: PersonService
-  ) { }
+  ) { 
+    UserNameValidator.myValidator = this;
+  }
+
+  public static nameExists(control: AbstractControl): Promise<ValidationErrors | null> {
+    return UserNameValidator.myValidator.alreadyExists(control);
+  }
 
   public alreadyExists(control: AbstractControl): Promise<ValidationErrors | null> {
     return new Promise((iTakeMyPromise)=> {

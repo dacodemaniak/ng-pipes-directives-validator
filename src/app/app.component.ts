@@ -46,7 +46,8 @@ export class AppComponent implements OnInit {
       lastName: [
         '',
         Validators.required,
-        this.userNameValidator.alreadyExists.bind(this.userNameValidator)
+        //this.userNameValidator.alreadyExists.bind(this.userNameValidator)
+        UserNameValidator.nameExists
       ],
       firstName: [
         ''

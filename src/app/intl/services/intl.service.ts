@@ -21,6 +21,7 @@ export class IntlService {
   public set language(language: string) {
     this._language = language;
     // @Todo reload translations as language change
+    this._loadTranslations();
   }
 
   public get translateService(): TranslateService {

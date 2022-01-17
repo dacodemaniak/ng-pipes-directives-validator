@@ -6,24 +6,7 @@ import { SortDirective } from './sort.directive';
 import { click, findEl } from './../../testing/helpers/element.spec-helper';
 import { By } from '@angular/platform-browser';
 
-const persons: PersonModel[] = [
-  {
-    lastName: 'Zidane',
-    firstName: 'Zinedine'
-  },
-  {
-    lastName: 'Aubert',
-    firstName: 'Jean-Luc'
-  },
-  {
-    lastName: 'Bond',
-    firstName: 'James'
-  },
-  {
-    lastName: 'Latte',
-    firstName: 'Truddy'
-  },
-];
+
 
 @Component({
   template: `
@@ -68,8 +51,6 @@ class HostComponent {
   public setCurrentSortCol(sortedCol: {sortedCol: string, direction: string}): void {
     this.sortedCol = sortedCol;
   }
-
-  
 }
 
 describe('SortDirective', () => {
@@ -106,9 +87,12 @@ describe('SortDirective', () => {
   });
 
   it (`Should invoke appSort on click`, () => {
-    const directive = fixture.debugElement.query(By.directive(SortDirective)).injector.get(SortDirective) as SortDirective;
+    const directive = fixture.debugElement
+      .query(By.directive(SortDirective))
+      .injector.get(SortDirective) as SortDirective;
+    
     spy = spyOn(directive, 'sortTable');
-    ngSpanSort.triggerEventHandler('click', null)
+    ngSpanSort.triggerEventHandler('click', null);
     fixture.detectChanges();
     expect(spy).toHaveBeenCalled();
   });
